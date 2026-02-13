@@ -33,6 +33,26 @@ WSLのせいだと思います。
 トンボ付きにしたければTeX/cpp-intro.texの```%\Tombowtrue```周りを編集してください。
 ただし、表紙がずれると思います。
 
+## DockerでPDFをビルド
+DockerとDocker Composeが使える環境で、以下を実行してください。
+
+```bash
+docker compose build pdf-builder
+UID=$(id -u) GID=$(id -g) docker compose run --rm pdf-builder
+```
+
+生成されたPDFは `TeX/cpp-intro.pdf` に出力されます。
+
+`TeX/jcompile.sh` の手順（`uplatex` / `mendex` / `dvipdfmx`）をそのままコンテナ内で実行します。
+既存の `sleep 1` もそのまま利用します。
+
+`make` 経由で実行する場合は以下でも同じです。
+
+```bash
+make pdf-docker-build
+make pdf-docker
+```
+
 ## 紙の本が欲しい
 紙の本は[こちら](https://www.amazon.co.jp/dp/4048930710/)から入手できます。
 またはお近くの適当な書店まで。
