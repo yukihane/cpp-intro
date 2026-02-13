@@ -22,10 +22,10 @@ test -s cpp-intro.pdf
 
 # Generate a screen-friendly variant with tighter margins while keeping pagination.
 # Tune these values if a different visible margin is preferred.
-VIEW_TRIM_LEFT=36
-VIEW_TRIM_BOTTOM=72
-VIEW_PAGE_WIDTH=600
-VIEW_PAGE_HEIGHT=828
+VIEW_TRIM_LEFT=90
+VIEW_TRIM_BOTTOM=200
+VIEW_PAGE_WIDTH=430
+VIEW_PAGE_HEIGHT=760
 
 cat > /tmp/cpp-intro-view-setpagedevice.ps <<EOF
 << /BeginPage { -${VIEW_TRIM_LEFT} -${VIEW_TRIM_BOTTOM} translate } >> setpagedevice
