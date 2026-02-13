@@ -42,10 +42,14 @@ PDF生成:
 UID=$(id -u) GID=$(id -g) docker compose run --build --rm pdf-builder
 ```
 
-生成されたPDFは `TeX/cpp-intro.pdf` に出力されます。
+生成されたPDFは以下の2種類です。
+
+- `TeX/cpp-intro.pdf` (元の版面のまま。印刷向け)
+- `TeX/cpp-intro-view.pdf` (閲覧向け。ページサイズ調整で余白を詰めた版)
 
 `TeX/jcompile.sh` の手順（`uplatex` / `mendex` / `dvipdfmx`）をそのままコンテナ内で実行します。
-既存の `sleep 1` もそのまま利用します。
+既存の `sleep 1` もそのまま利用します。閲覧向けPDFの余白量は
+`TeX/jcompile.sh` 内の `VIEW_TRIM_*` / `VIEW_PAGE_*` 変数で調整できます。
 
 `make` 経由で実行する場合は以下でも同じです。
 
