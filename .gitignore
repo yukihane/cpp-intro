@@ -8,3 +8,8 @@ TeX/*.log
 TeX/*.out
 TeX/*.pdf
 TeX/*.toc
+
+# Generated docs/analyze artifacts
+docs/index.html
+analyze/ind.txt
+analyze/math.txt
