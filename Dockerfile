@@ -12,6 +12,7 @@ RUN apt-get update \
         texlive-latex-recommended \
         texlive-fonts-recommended \
         texlive-plain-generic \
+    && kanji-config-updmap-sys --ja haranoaji \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
