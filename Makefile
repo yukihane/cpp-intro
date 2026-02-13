@@ -9,7 +9,7 @@ pdf-docker-build :
 	docker compose build pdf-builder
 
 pdf-docker :
-	UID=$$(id -u) GID=$$(id -g) docker compose run --rm pdf-builder
+	UID=$$(id -u) GID=$$(id -g) docker compose run --build --rm pdf-builder
 
 test : cpptest
 
