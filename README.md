@@ -73,9 +73,6 @@ make pdf-docker
 Androidアプリ版を作ろうとしています。
 あなたがこれを読んでる頃には飽きて開発を止めてたり、リリースされていたりするかもしれません。
 
-## Thanks
-[源ノ角ゴシック](https://github.com/adobe-fonts/source-han-sans)と[源ノ明朝](https://github.com/adobe-fonts/source-han-serif)を利用しています。
-
 ## ライセンス
 
 GPLv3
