@@ -5,6 +5,7 @@ rm -f *.aux
 rm -f *.toc
 rm -f cpp-intro.dvi
 rm -f cpp-intro.pdf
+rm -f cpp-intro-view.pdf
 
 # This document hits known compatibility warnings/errors on modern TeX Live,
 # so run non-interactively and continue until DVI/PDF output is attempted.
@@ -18,3 +19,28 @@ sleep 1
 dvipdfmx cpp-intro
 
 test -s cpp-intro.pdf
+
+# Generate a screen-friendly variant with tighter margins while keeping pagination.
+# Tune these values if a different visible margin is preferred.
+VIEW_TRIM_LEFT=90
+VIEW_TRIM_BOTTOM=200
+VIEW_PAGE_WIDTH=430
+VIEW_PAGE_HEIGHT=760
+
+cat > /tmp/cpp-intro-view-setpagedevice.ps <<EOF
+<< /BeginPage { -${VIEW_TRIM_LEFT} -${VIEW_TRIM_BOTTOM} translate } >> setpagedevice
+EOF
+
+gs -q \
+  -dNOPAUSE \
+  -dBATCH \
+  -sDEVICE=pdfwrite \
+  -dCompatibilityLevel=1.5 \
+  -dFIXEDMEDIA \
+  -dDEVICEWIDTHPOINTS="${VIEW_PAGE_WIDTH}" \
+  -dDEVICEHEIGHTPOINTS="${VIEW_PAGE_HEIGHT}" \
+  -sOutputFile=cpp-intro-view.pdf \
+  -f /tmp/cpp-intro-view-setpagedevice.ps \
+  cpp-intro.pdf
+
+test -s cpp-intro-view.pdf
