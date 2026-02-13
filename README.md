@@ -11,15 +11,21 @@ GitHub Pagesでの閲覧
 <https://ezoeryou.github.io/cpp-intro/>
 
 ## PDFはどこ？
-上の[releases](https://github.com/kurema/cpp-intro/releases)にあります。
-Releaseを `Publish` すると、GitHub Actionsで `TeX/cpp-intro.pdf` と `TeX/cpp-intro-view.pdf` が自動生成され、Release assetsに添付されます。
+上の[Releases](https://github.com/yukihane/cpp-intro/releases)にあります。
+Releaseを `Publish` すると、GitHub Actionsで以下の2つが自動生成され、Release assetsに添付されます。
+
+- `cpp-intro.pdf`
+  - 元の版面サイズのPDFです。
+  - フォント埋め込み済みで、印刷向けの利用を想定しています。
+- `cpp-intro-view.pdf`
+  - `cpp-intro.pdf` をベースに、ページサイズを調整して余白を詰めた閲覧向けPDFです。
+  - フォント埋め込み済みで、スマートフォンやタブレットでの閲覧を想定しています。
 
 元のレポジトリではPDFファイルが転がってなかったので、いくつかの欠損ファイル(*.eps)を補完してPDFを作成しました。
 難しい事を考えなくてもダウンロードして普通に使えます
 
-WSLのUbuntu 16.04.6 LTSでコンパイルしました。
-おそらくファイルロックのタイミングの関係でdvipdfmxに失敗するので、1秒間のsleepを追加しています。
-WSLのせいだと思います。
+現在のPDF生成は Docker 経由を前提にしています。
+ビルド手順は `TeX/jcompile.sh` に集約されており、`uplatex` / `mendex` / `dvipdfmx` を実行した後、`cpp-intro-view.pdf` を生成します。
 
 ## 問題
 フォントが出版版と少し違うようです。
