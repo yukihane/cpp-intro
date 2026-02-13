@@ -5,6 +5,12 @@ clean :
 	rm -f index.html
 	rm -f bin/sample-code-checker
 
+pdf-docker-build :
+	docker compose build pdf-builder
+
+pdf-docker :
+	UID=$$(id -u) GID=$$(id -g) docker compose run --build --rm pdf-builder
+
 test : cpptest
 
 texttest : *.md
@@ -33,4 +39,4 @@ filter.json : *.md style.css
 index.md : *.md
 	pandoc -s --toc --toc-depth=6 --mathjax -o index.md -H style.css  pandoc_title_block *-*.md
 
-.PHONY : all book clean test test-tool texttest cpptest retest
+.PHONY : all book clean pdf-docker-build pdf-docker test test-tool texttest cpptest retest

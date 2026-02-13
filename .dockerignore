@@ -1,0 +1,12 @@
+.git
+docs
+build
+analyze
+TeX/*.aux
+TeX/*.log
+TeX/*.dvi
+TeX/*.toc
+TeX/*.out
+TeX/*.idx
+TeX/*.ind
+TeX/*.ilg

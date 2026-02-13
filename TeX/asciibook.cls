@@ -168,7 +168,7 @@
 %
 % パラグラフ
 \makeatletter
-\newcommand{\jsParagraphMark}{■}
+\providecommand{\jsParagraphMark}{■}
 \renewcommand{\paragraph}{\@startsection{paragraph}{4}{\z@}%
   {0.5\Cvs \@plus.5\Cdp \@minus.2\Cdp}%
   %{\if@slide .5\Cvs \@plus.3\Cdp \else -1zw\fi}% 改行せず 1zw のアキ
@@ -286,4 +286,3 @@
           \@tempdima\jsc@tocl@width \advance\@tempdima 1zw
           \@dottedtocline{2}{\@tempdima}{3.5zw}}
 \makeatother
-

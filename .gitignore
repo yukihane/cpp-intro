@@ -1,0 +1,15 @@
+# TeX build artifacts
+TeX/*.aux
+TeX/*.dvi
+TeX/*.idx
+TeX/*.ilg
+TeX/*.ind
+TeX/*.log
+TeX/*.out
+TeX/*.pdf
+TeX/*.toc
+
+# Generated docs/analyze artifacts
+docs/index.html
+analyze/ind.txt
+analyze/math.txt
