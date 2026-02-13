@@ -36,9 +36,10 @@ WSLのせいだと思います。
 ## DockerでPDFをビルド
 DockerとDocker Composeが使える環境で、以下を実行してください。
 
+PDF生成:
+
 ```bash
-docker compose build pdf-builder
-UID=$(id -u) GID=$(id -g) docker compose run --rm pdf-builder
+UID=$(id -u) GID=$(id -g) docker compose run --build --rm pdf-builder
 ```
 
 生成されたPDFは `TeX/cpp-intro.pdf` に出力されます。
