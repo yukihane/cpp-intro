@@ -1,0 +1,37 @@
+name: Release PDF
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-pdf-${{ github.event.release.id }}
+  cancel-in-progress: false
+
+jobs:
+  build-and-attach:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build PDFs in Docker
+        run: env UID="$(id -u)" GID="$(id -g)" docker compose run --build --rm pdf-builder
+
+      - name: Verify generated PDFs
+        run: |
+          test -s TeX/cpp-intro.pdf
+          test -s TeX/cpp-intro-view.pdf
+
+      - name: Upload PDFs to release assets
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            TeX/cpp-intro.pdf
+            TeX/cpp-intro-view.pdf
+          fail_on_unmatched_files: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

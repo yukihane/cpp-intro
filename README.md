@@ -12,6 +12,7 @@ GitHub Pagesでの閲覧
 
 ## PDFはどこ？
 上の[releases](https://github.com/kurema/cpp-intro/releases)にあります。
+Releaseを `Publish` すると、GitHub Actionsで `TeX/cpp-intro.pdf` と `TeX/cpp-intro-view.pdf` が自動生成され、Release assetsに添付されます。
 
 元のレポジトリではPDFファイルが転がってなかったので、いくつかの欠損ファイル(*.eps)を補完してPDFを作成しました。
 難しい事を考えなくてもダウンロードして普通に使えます
