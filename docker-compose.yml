@@ -1,0 +1,10 @@
+services:
+  pdf-builder:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    user: "${UID:-1000}:${GID:-1000}"
+    working_dir: /work/TeX
+    volumes:
+      - .:/work
+    command: bash jcompile.sh
